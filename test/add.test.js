@@ -2,26 +2,27 @@ import add from '../src/add';
 
 describe('Utilities', () => {
   describe('add()', () => {
-    test('should return 10 when passed 6 + 4', () => {
+    it('should be a function', () => {
+      const addFn = typeof add;
+      expect(addFn).toBe('function');
+    });
+
+    it('should return sum when passed two number', () => {
       expect(add(6, 4)).toBe(10);
+      expect(add(5.5, 4.5)).toBe(10);
+      expect(add(20, -10)).toBe(10);
+      expect(add(10, -20)).toBe(-10);
+      expect(add(9, true)).toBe(10);
+      expect(add(10, null)).toBe(10);
+      expect(add(8, Object(2))).toBe(10);
+      expect(add(null, null)).toBe(0);
+    });
+
+    it('should return NaN when data type is not a number', () => {
+      expect(add(6, undefined)).toBe(NaN);
+      expect(add(6, {})).toBe(NaN);
+      expect(add(6, Object('2'))).toBe(NaN);
+      expect(add(6, 'string')).toBe(NaN);
     });
   });
 });
-
-// test('test add numbers', t => {
-// t.is(add(6, 4), 10);
-// t.is(add(6.5, 4.5), 11);
-// t.is(add(6, -4), 2);
-// t.is(add(6, -8), -2);
-// t.is(add(6, ''), '6');
-// t.is(add(6, undefined), NaN);
-// t.is(add(6, null), 6);
-// t.is(add(6, true), 7);
-// t.is(add(6, false), 6);
-// t.is(add(6, '4'), '64');
-// t.is(add(6, {}), NaN);
-// t.is(add(6, new Object()), NaN); // eslint-disable-line no-new-object
-// t.is(add(6, new RegExp()), NaN);
-// t.is(add(6, Object(2)), 8); // eslint-disable-line unicorn/new-for-builtins
-// t.is(add(6, Object('2')), '62'); // eslint-disable-line unicorn/new-for-builtins
-// });

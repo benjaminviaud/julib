@@ -6,7 +6,8 @@
   "repository": "https://github.com/benjaminviaud/julib",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "test": "jest --watch",
+    "coverage": "jest --coverage"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
